@@ -50,7 +50,9 @@ const tocListItems = asideUL.querySelectorAll("li");
   });
 })();
 
-(function smoothScroll(event) {
+// Smooth scroll to heading when clicking on ToC item -- eh, why not?
+
+(function addSoothScroll() {
   [...tocListItems].forEach((anchor) => {
     anchor.addEventListener("click", (event) => {
       event.preventDefault();
@@ -60,7 +62,7 @@ const tocListItems = asideUL.querySelectorAll("li");
   });
 })();
 
-// Functions used in the IIFEs above
+// Functions below are used in the IIFEs above
 
 function observeHeadings(items) {
   /* */
