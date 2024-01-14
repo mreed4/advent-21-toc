@@ -66,9 +66,9 @@ const tocListItems = asideUL.querySelectorAll("li");
 
 function observeHeadings(items) {
   /* */
-  //www.freecodecamp.org/news/how-to-make-a-dynamic-table-of-contents-in-javascript/
+  // https:www.freecodecamp.org/news/how-to-make-a-dynamic-table-of-contents-in-javascript/
   /* */
-  https: items.forEach((item) => {
+  items.forEach((item) => {
     if (item.isIntersecting) {
       const index = [...headings].indexOf(item.target);
       tocListItems.forEach((anchor) => {
