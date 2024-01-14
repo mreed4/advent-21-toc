@@ -1,9 +1,29 @@
-// https://www.freecodecamp.org/news/how-to-make-a-dynamic-table-of-contents-in-javascript/
+import { sections } from "./data.js";
+
+const asideUL = document.querySelector("aside ul");
+const meat = document.querySelector(".meat-of-article");
+
+// First add the sections, then build the ToC, then add observers
+
+(function addSections() {
+  sections.forEach((section) => {
+    const sectionWrapper = document.createElement("section");
+    const heading = document.createElement("h3");
+    const content = document.createElement("div");
+
+    heading.innerText = section.heading;
+    content.innerHTML = section.content;
+
+    sectionWrapper.appendChild(heading);
+    sectionWrapper.appendChild(content);
+
+    meat.appendChild(sectionWrapper);
+  });
+})();
+
+// headings can't be declared until after the addSections function is called
 
 const headings = document.querySelectorAll("h3");
-const asideUL = document.querySelector("aside ul");
-
-// First build the ToC, then add observers
 
 (function buildToC() {
   [...headings].forEach((heading) => {
@@ -43,7 +63,10 @@ const tocListItems = asideUL.querySelectorAll("li");
 // Functions used in the IIFEs above
 
 function observeHeadings(items) {
-  items.forEach((item) => {
+  /* */
+  //www.freecodecamp.org/news/how-to-make-a-dynamic-table-of-contents-in-javascript/
+  /* */
+  https: items.forEach((item) => {
     if (item.isIntersecting) {
       const index = [...headings].indexOf(item.target);
       tocListItems.forEach((anchor) => {
@@ -64,6 +87,7 @@ function addIdToHeading(heading) {
   const headingId = heading.innerText.toLowerCase().replace(punctuation, "").replace(allNonLetters, "-");
   heading.id = headingId;
 
+  // Returned id is used in the buildListItem function
   return headingId;
 }
 
